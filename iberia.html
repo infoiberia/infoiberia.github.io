@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Detección de ubicación por provincia</title>
+  </head>
+  <body>
+    <p id="provincia"></p>
+
+    <script>
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        document.getElementById("provincia").innerHTML = "La geolocalización no está disponible en este navegador.";
+      }
+
+      function showPosition(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Utiliza una API de geolocalización para obtener la provincia
+        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const provincia = data.address.state;
+            document.getElementById("provincia").innerHTML = `Estás en la provincia de ${provincia}.`;
+
+            // Redirecciona al usuario dependiendo de la provincia en que se encuentra.
+            if (provincia === "Santa Fe") {
+              window.location.href = "https://wa.me/3415717671";
+            } else if (provincia === "Entre Ríos") {
+              window.location.href = "https://wa.me/3415717671";
+            } else if (provincia === "Corrientes") {
+              window.location.href = "https://wa.me/3415717671";
+			} else if (provincia === "Misiones") {
+              window.location.href = "https://wa.me/3415717671";
+            } else if (provincia === "Chaco") {
+              window.location.href = "https://wa.me/3415717671";
+			} else if (provincia === "Formosa") {
+              window.location.href = "https://wa.me/3415717671";
+            } else if (provincia === "Córdoba") {
+              window.location.href = "https://wa.me/3512554027";
+			} else if (provincia === "La Pampa") {
+              window.location.href = "https://wa.me/3512554027";
+            } else if (provincia === "Mendoza") {
+              window.location.href = "https://wa.me/3512554027";
+			} else if (provincia === "San Luis") {
+              window.location.href = "https://wa.me/3512554027";
+			} else if (provincia === "San Juan") {
+              window.location.href = "https://wa.me/3512554027";
+            } else if (provincia === "La Rioja") {
+              window.location.href = "https://wa.me/3512554027";
+			} else if (provincia === "Catamarca") {
+              window.location.href = "https://wa.me/3512554027";
+			} else if (provincia === "Santiago del Estero") {
+              window.location.href = "https://wa.me/3512554027";
+            } else if (provincia === "Tucuman") {
+              window.location.href = "https://wa.me/3512554027";
+			} else if (provincia === "Salta") {
+              window.location.href = "https://wa.me/3512554027";
+			} else if (provincia === "Jujuy") {
+              window.location.href = "https://wa.me/3512554027";
+            } else if (provincia === "Ciudad Autónoma de Buenos Aires") {
+              window.location.href = "https://wa.me/1131370277";
+			} else if (provincia === "Buenos Aires") {
+              window.location.href = "https://wa.me/1131370277";
+			} else if (provincia === "Tierra del Fuego") {
+              window.location.href = "https://wa.me/1131370277";
+			} else if (provincia === "Santa Cruz") {
+              window.location.href = "https://wa.me/1131370277";
+			} else if (provincia === "Chubut") {
+              window.location.href = "https://wa.me/1131370277";
+			} else if (provincia === "Río Negro") {
+              window.location.href = "https://wa.me/1131370277";
+			} else if (provincia === "Neuquen") {
+              window.location.href = "https://wa.me/1131370277";
+			} else {
+              window.location.href = "https://juani357.github.io/";
+            }
+          })
+          .catch(error => {
+            document.getElementById("provincia").innerHTML = "Hubo un error al obtener tu ubicación, probá actualizando la pagina";
+          });
+      }
+    </script>
+  </body>
+</html>
